@@ -140,6 +140,62 @@ public class Main {
         break;
 
             case "2":
+        // ===== PART 3 - Q2 MENU - ADDED =====
+    boolean inPart3 = true;
+    while (inPart3) {
+        System.out.println("\n--- Recently Sent Messages - Part 3 ---");
+        System.out.println("1) Display Sender and Recipient of all SENT messages");
+        System.out.println("2) Display the LONGEST message");
+        System.out.println("3) Search for Message by Message ID");
+        System.out.println("4) Search for Messages by Recipient");
+        System.out.println("5) Delete Message by Message Hash");
+        System.out.println("6) Display Full Report");
+        System.out.println("7) Back to Main Menu");
+        System.out.print("Choose an option: ");
+        String part3Option = scanner.nextLine();
+
+        switch (part3Option) {
+            case "1":
+                // a) Sender + Recipient
+                String senderRecipient = Message.displaySenderAndRecipient();
+                System.out.println(senderRecipient.isEmpty() ? "No sent messages yet." : senderRecipient);
+                break;
+            case "2":
+                // b) Longest Message
+                String longest = Message.displayLongestMessage();
+                System.out.println(longest.isEmpty() ? "No messages yet." : "Longest Message: " + longest);
+                break;
+            case "3":
+                // c) Search by Message ID
+                System.out.print("Enter Message ID to search: ");
+                String searchID = scanner.nextLine();
+                System.out.println(Message.searchByMessageID(searchID));
+                break;
+            case "4":
+                // d) Search by Recipient
+                System.out.print("Enter Recipient to search (+27...): ");
+                String searchRecip = scanner.nextLine();
+                System.out.println(Message.searchByRecipient(searchRecip));
+                break;
+            case "5":
+                // e) Delete by Hash
+                System.out.print("Enter Message Hash to delete: ");
+                String hashToDelete = scanner.nextLine();
+                System.out.println(Message.deleteByHash(hashToDelete));
+                break;
+            case "6":
+                // f) Full Report
+                String report = Message.displayReport();
+                System.out.println(report.isEmpty() ? "No messages yet." : report);
+                break;
+            case "7":
+                inPart3 = false;
+                break;
+            default:
+                System.out.println("Invalid option. Please choose 1, 2, 3, 4, 5, 6 or 7.");
+                break;
+        }
+    }
     System.out.println("Coming Soon.");
         break;
 
